@@ -1,0 +1,49 @@
+-- 
+-- Roll No: 44
+-- Name: Rinsiya Rasmin R V
+-- Program: <program name>
+-- 
+
+
+--
+-- Table structure for table employee
+--
+create table employee(ssn int primary key,name varchar(10),address varchar(20),dnum char(5));
+alter table employee add super_ssn int;
+alter table employee add constraint employee_super_ssn_fkey foreign key(super_ssn)references employee(ssn);
+alter table employee add constraint employee_dnum_fkey foreign key(dnum)references dept(dno);
+
+--
+-- Table structure for table dept
+--
+create table dept(dno char(5)primary key,dname varchar(10) unique,location char(15));
+alter table dept add mgr_ssn int;
+alter table dept add constraint dept_mgr_ssn_fkey foreign key(mgr_ssn)references employee(ssn);
+
+-- ---------create/alter statement commands----------- # This line may be removed in the actual file
+
+--
+-- Dumping data for table employee
+--
+insert into  employee values(1,'ammu','kuttipuram',01);
+insert into employee values(2,'appu','vellamunda',01);
+insert into employee values(3,'anu','kalpetta',01);
+insert into employee values(4,'anni','manathavady',02);
+insert into employee values(5,'achu','snb',02);
+--
+-- Dumping data for table dept
+--
+insert into dept values(1,'mca','kerala');
+insert into dept values(2,'mba','goa');
+insert into dept values(3,'eee','delhi');
+insert into dept values(4,'ai','chennai');
+insert into dept values(5,'mech','up');
+
+-- --------insert/update statement commands----------- # This line may be removed in the actcual file
+
+--
+-- SQl Query Statements
+--
+
+-- -----SQL query statments preceeded by the its question-------- # This line may be removed in the actual file
+-- -----Question number should be commented---------------#This line may be removed in the actual file
