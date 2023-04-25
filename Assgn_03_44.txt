@@ -1,0 +1,16 @@
+-- Roll No: 44
+-- Name: Rinsiya Rasmin R V
+-- Program: Assignment - III
+
+
+
+-- SQl Query Statements
+
+-- Q1: Retrieve the name and address of all employees who work for the 'Research' department. (CO: 1, Marks: 3)
+select name,address from employee where dnum=(select dno from dept where dname=%s);
+
+-- Q2: Retrieve the project number, project name and total number of hours allocated for the project number 2 (CO: 1, Marks: 4)
+select pnumber,pname,sum(hours) from project join workson where pnumber=pno and pnumber=%d;
+
+-- Q3: Retrieve the list of projects (project number, project name, department name and department location) controlled by the department, located at 'Stafford' (CO: 1, Marks: 3)
+select pnumber,pname,dname,location from project join dept where dnum=dno and location=%s;
