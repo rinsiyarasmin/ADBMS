@@ -1,0 +1,98 @@
+-- 
+-- Roll No: 44
+-- Name: Rinsiya Rasmin R V
+-- Program: <program name>
+-- 
+
+--
+-- Table structure for table dept
+--
+create table dept(dno char(5)primary key,dname varchar(10) unique,location char(15));
+alter table dept add mgr_ssn int;
+alter table dept add constraint dept_mgr_ssn_fkey foreign key(mgr_ssn)references employee(ssn);
+alter table dept add mgr_strat_date date;
+
+--
+-- Table structure for table employee
+--
+create table employee(ssn int primary key,name varchar(10),address varchar(20),dnum char(5));
+alter table employee add super_ssn int;
+alter table employee add constraint employee_super_ssn_fkey foreign key(super_ssn)references employee(ssn);
+alter table employee add constraint employee_dnum_fkey foreign key(dnum)references dept(dno);
+alter table employee add salary int check(salary>=20000 and salary <=60000);
+
+--
+-- Table structure for table project
+--
+create table project(pnumber int primary key,pname varchar(10),plocation varchar(15),dnum char(5),foreign key(dnum)references dept(dno));
+
+--
+-- Table structure for workson
+--
+create table workson(essn int,pno int,hours float(3,1));
+alter table workson add primary key(essn,pno);
+alter table workson add foreign key(essn)references employee(ssn);
+alter table workson add foreign key(pno)references project(pnumber);
+ 
+-- ---------create/alter statement commands----------- # This line may be removed in the actual file
+
+--
+-- Dumping data for table dept
+--
+insert into dept values(1,'mca','kerala');
+insert into dept values(2,'mba','goa');
+insert into dept values(3,'eee','delhi');
+insert into dept values(4,'ai','chennai');
+insert into dept values(5,'mech','up');
+update dept set mgr_ssn=1 where dno=1;
+update dept set mgr_ssn=2 where dno=2;
+update dept set mgr_ssn=3 where dno=3;
+update dept set mgr_ssn=4 where dno=4;
+update dept set mgr_ssn=5 where dno=5;
+update dept set mgr_start_date='2022-01-01' where dno=1;
+update dept set mgr_strat_date='2022-02-02' where dno=2;
+update dept set mgr_strat_date='2022-03-03' where dno=3;
+update dept set mgr_strat_date='2022-04-04' where dno=4;
+update dept set mgr_strat_date='2022-05-05' where dno=5;
+
+--
+-- Dumping data for table employee
+--
+insert into  employee values(1,'ammu','kuttipuram',01);
+insert into employee values(2,'appu','vellamunda',01);
+insert into employee values(3,'anu','kalpetta',01);
+insert into employee values(4,'anni','manathavady',02);
+insert into employee values(5,'achu','snb',02);
+update employee set salary =20000 where ssn=1;
+update employee set salary =25000 where ssn=2;
+update employee set salary =30000 where ssn=3;
+update employee set salary =35000 where ssn=4;
+update employee set salary =40000 where ssn=5;
+
+--
+-- Dumping data for table project
+-- 
+insert into project values(1,'milk dairy','goa',1);
+insert into project values(2,'libmng','up',1);
+insert into project values(3,'invmng','up',2);
+insert into project values(4,'vehmng','kerala',2);
+insert into project values(5,'shopmng','chennai',2);
+
+--
+-- Dumping data for table workson
+-- 
+insert into workson values(1,1,5.22);
+insert into workson values(2,2,8.52);
+insert into workson values(3,3,10.53);
+insert into workson values(4,4,6.54);
+insert into workson values(5,5,7.56);
+
+-- --------insert/update statement commands----------- # This line may be removed in the actcual file
+
+--
+-- SQl Query Statements
+--
+
+-- -----SQL query statments preceeded by the its question-------- # This line may be removed in the actual file
+-- -----Question number should be commented---------------#This line may be removed in the actual file
+
